@@ -1,27 +1,58 @@
+```javascript
+// =====================================
+// BCM MARKET
+// Buscador de productos
+// =====================================
+
 function buscarProducto() {
 
-    let texto =
-        document
+    let filtro = document
         .getElementById("buscador")
         .value
         .toLowerCase();
 
-    let productos =
-        document
-        .getElementsByClassName("producto");
+    let productos = document.querySelectorAll(".producto");
 
-    for (let i = 0; i < productos.length; i++) {
+    productos.forEach(function(producto){
 
-        let contenido =
-            productos[i]
-            .innerText
+        let nombre = producto
+            .querySelector("h3")
+            .textContent
             .toLowerCase();
 
-        if (contenido.includes(texto)) {
-            productos[i].style.display = "block";
-        } else {
-            productos[i].style.display = "none";
+        if(nombre.includes(filtro)){
+            producto.style.display = "block";
+        }else{
+            producto.style.display = "none";
         }
 
-    }
+    });
+
 }
+
+// =====================================
+// Mensaje de bienvenida
+// =====================================
+
+window.onload = function(){
+
+    console.log("BCM MARKET cargado correctamente");
+
+};
+
+// =====================================
+// Botón WhatsApp flotante
+// =====================================
+
+const whatsapp = document.querySelector(".whatsapp-float");
+
+if(whatsapp){
+
+    whatsapp.addEventListener("click", function(){
+
+        console.log("Abriendo WhatsApp");
+
+    });
+
+}
+```
